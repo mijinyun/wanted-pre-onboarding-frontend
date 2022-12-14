@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
+import './Todo.scss';
+import {FcApproval} from 'react-icons/fc';
 
 const apiURL = 'https://pre-onboarding-selection-task.shop/';
 
@@ -56,7 +58,7 @@ const Todo = (props) => {
         .then((data) => {
             // console.log(data);
             if (data.status === 204) {
-                document.querySelector('.test').remove();
+                document.querySelector('.todo_entire_section').remove();
             }
         })
     }
@@ -64,22 +66,27 @@ const Todo = (props) => {
 
 
     return(
-        <div className="test">
-            <div key={eachTodo.id} style={{display:'flex'}}>
-                    { editMode ? <input type='text' onChange={(e) => setEditInput(e.target.value)} defaultValue={editInput}></input> : <div>{eachTodo.todo}</div> }
-
-                    <div>{eachTodo.isCompleted == false ? <span> x </span> :  <span> V </span>}</div>
-
-                    { editMode ? 
-                        (<div>
-                            <button type='button' onClick={completeTodo}>완료</button>
-                            <button type='button' onClick={cancelTodo}>취소</button>
-                        </div>) 
-                    : 
-                    (<button type='button' onClick={updateTodo}>수정</button>)}
-
-                    <button type='button' onClick={deleteTodo}>삭제</button>
-                </div>
+        <div className="todo_entire_section">
+            <table className='todo_table'>
+                <tr key={eachTodo.id}  style={{display:'table', width:'100%',alignContent:'center'}}>
+                    <td className='todo_input_section'>
+                        { editMode ? <input type='text' className="updateInputSection" onChange={(e) => setEditInput(e.target.value)} defaultValue={editInput}></input> : <div>{eachTodo.todo}</div> }
+                    </td>
+                    <td style={{width:'10%'}}>{eachTodo.isCompleted == false ? <span> x </span> :  <span> <FcApproval /> </span>}</td>
+                    <td style={{width:'15%'}}>
+                        { editMode ? 
+                            (<div>
+                                <button type='button' className='completebtn' onClick={completeTodo}>완료</button>
+                                <button type='button' className='cancelbtn' onClick={cancelTodo}>취소</button>
+                            </div>) 
+                        : 
+                        (<button type='button' className='updatebtn' onClick={updateTodo}>수정</button>)}
+                    </td>
+                    <td style={{width:'10%'}}>
+                        <button type='button' className='deletebtn' onClick={deleteTodo}>삭제</button>
+                    </td>
+                </tr>
+            </table>
         </div>
     )
 }

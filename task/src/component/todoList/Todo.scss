@@ -1,0 +1,54 @@
+@import '../Commons.scss';
+
+.todo_entire_section {
+    box-sizing: border-box;
+    width: 100%;
+
+    .todo_table {
+        border: 1px solid rgb(129, 129, 129);
+        width: 700px;
+        height: 50px;
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        box-shadow: 1px 1px 1px;
+    }
+}
+
+.todo_input_section {
+    text-align: center;
+}
+
+.updateInputSection {
+    background:rgba(255, 255, 255);
+    width: 70%;
+    height:35px;
+    border:0;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px;
+    font-size: 1.1rem;
+    
+}
+
+.deletebtn, .updatebtn {
+    border: 0;
+    width: 45px;
+    height: 25px;
+    background-color: aquamarine;
+}
+
+.cancelbtn, .completebtn {
+    border: 0;
+    width: 45px;
+    height: 25px;
+    background-color: rgb(255, 104, 104);
+    margin: 2px;
+}
+
+.cancelbtn {
+    border: 0;
+    width: 45px;
+    height: 25px;
+    background-color: rgb(119, 119, 119);
+    margin: 2px;
+}

@@ -47,6 +47,7 @@ const TodoList = () => {
         .then((data) => {
             console.log('등록성공!');
             setTodoInfos(todoInfos.concat(data.data));
+            content.current.value="";
         })
     }
 
