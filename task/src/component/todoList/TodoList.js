@@ -22,7 +22,6 @@ const TodoList = () => {
         })
         .then((res) => { return res;})
         .then((data) => {
-            console.log(data.data);
             setTodoInfos(data.data);
         })
     }
@@ -44,11 +43,8 @@ const TodoList = () => {
         })
         .then((res) => { return res })
         .then((data) => {
-            console.log(data.data); 
             console.log('등록성공!');
             setTodoInfos(todoInfos.concat(data.data));
-            console.log('todoInfos:',todoInfos);
-            
         })
     }
 
@@ -63,7 +59,10 @@ const TodoList = () => {
             <button type='button' onClick={CreateTodo}>+</button>
         </div>
         <div>
-            <Todo todoInfos={todoInfos}/>
+        {todoInfos.map((todoInfo) => {
+            return (
+            <Todo todoInfo={todoInfo} setTodoInfos={setTodoInfos} />
+        )})}
         </div>
         </>
 
