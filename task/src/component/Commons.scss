@@ -1,15 +1,9 @@
-@font-face {
-    font-family: 'WandohopeR';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/WandohopeR.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 @import url("https://font.elice.io/EliceDigitalBaeum.css");
 
 
 * {
 	box-sizing: border-box;
+	font-family: "Elice Digital Baeum", sans-serif;
 }
 
 html,body{
@@ -37,7 +31,7 @@ header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, vi
 
 
 h1, h2, h3, h4, h5, h6{
-	font-family: 'WandohopeR';
+	font-family: "Elice Digital Baeum", sans-serif;
 }
 
 p, span, input, select, ul, li, table, dl, dt, dd, button{
