@@ -45,10 +45,11 @@ const SignIn = () => {
         .then((res) => { return res })
         .then((data) => {
 
+            console.log(data);
             if (data.status === 200) {
                 alert('로그인 성공!'); 
                 navigate('/todo');
-                localStorage.setItem('access_token',data.token);
+                localStorage.setItem('access_token',data.data.access_token);
             }
             else if (data.status === 401) alert('아이디 또는 비밀번호 틀림 or 없는 회원');
 
