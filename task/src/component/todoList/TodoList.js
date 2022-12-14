@@ -66,7 +66,7 @@ const TodoList = () => {
                 <div>
                     {todoInfos.map((todoInfo) => {
                         return (
-                        <Todo todoInfo={todoInfo} setTodoInfos={setTodoInfos} />
+                        <Todo todoInfo={todoInfo} setTodoInfos={setTodoInfos} getTodo={getTodo}/>
                     )})}
                 </div>
             </div>
