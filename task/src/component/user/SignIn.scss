@@ -1,13 +1,12 @@
 @import '../Commons.scss';
 
-.signup_entire_section {
+.signIn_entire_section {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     background-color: rgb(250,250,250);
-
 
     h1 {
         font-size: 3.3rem;
@@ -35,18 +34,16 @@
     }
 }
 
-.signBtn {
+
+.loginBtn {
     cursor: pointer;
     width: 150px;
     height: 70px;
     border: 0;
     border-radius: 50px;
     margin-top: 40px;
-    background-color: aquamarine;
+    background-color: rgb(182, 127, 255);
     font-size: 1.1rem;
     font-weight: bold;
-}
-
-.warninglogin {
-    height: 30px;
+    color:white;
 }
