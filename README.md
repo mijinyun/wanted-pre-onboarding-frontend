@@ -60,7 +60,7 @@ https://user-images.githubusercontent.com/107825260/207725962-e7b760d7-ccbf-4010
 
 ---
 
-##### 2. 투두 리스트
+##### 2. TODO LIST
 
 ##### Assignment4
 
