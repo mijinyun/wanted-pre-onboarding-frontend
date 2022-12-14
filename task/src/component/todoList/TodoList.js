@@ -1,6 +1,8 @@
 import { createRef, useCallback, useEffect, useState } from 'react';
 import Todo from './Todo';
 import axios from 'axios';
+import './TodoList.scss';
+import {BsPlusLg} from 'react-icons/bs';
 
 const apiURL = 'https://pre-onboarding-selection-task.shop/';
 
@@ -53,18 +55,21 @@ const TodoList = () => {
     },[],[setTodoInfos])
 
     return(
-        <>
-        <div>
-            입력창 <input type="text" ref={content}></input>
-            <button type='button' onClick={CreateTodo}>+</button>
+        <div className='Todo_entire_section'>
+            <div className='todo_part'>
+                <h1>TODO LIST</h1>
+                <div className='input_section'>
+                    <input type="text" ref={content} placeholder="해야할 일을 입력해보세요!"></input>
+                    <button type='button' onClick={CreateTodo}><BsPlusLg /></button>
+                </div>
+                <div>
+                    {todoInfos.map((todoInfo) => {
+                        return (
+                        <Todo todoInfo={todoInfo} setTodoInfos={setTodoInfos} />
+                    )})}
+                </div>
+            </div>
         </div>
-        <div>
-        {todoInfos.map((todoInfo) => {
-            return (
-            <Todo todoInfo={todoInfo} setTodoInfos={setTodoInfos} />
-        )})}
-        </div>
-        </>
 
     )
 }
