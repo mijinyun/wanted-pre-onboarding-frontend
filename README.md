@@ -20,11 +20,11 @@ npm start
 
 ##### 1. 로그인 / 회원가입 / todo list 기능 구현
 
-https://user-images.githubusercontent.com/107825260/207725889-5563ad87-c25b-422a-adc0-272e79f919a8.gif
+<img src="https://user-images.githubusercontent.com/107825260/207725889-5563ad87-c25b-422a-adc0-272e79f919a8.gif">
 
 ##### 2. 토큰 유무에 따른 redirect확인
 
-https://user-images.githubusercontent.com/107825260/207725962-e7b760d7-ccbf-4010-aafe-8c937cf860d3.gif
+<img src="https://user-images.githubusercontent.com/107825260/207725962-e7b760d7-ccbf-4010-aafe-8c937cf860d3.gif">
 
 ## 📌구현 요구 사항 목록
 
