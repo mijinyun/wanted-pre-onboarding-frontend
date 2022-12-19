@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Todo.scss';
 import {FcApproval} from 'react-icons/fc';
@@ -6,12 +6,12 @@ import {FcApproval} from 'react-icons/fc';
 const apiURL = 'https://pre-onboarding-selection-task.shop/';
 
 const Todo = (props) => {
-    
-    const getTodo = props.getTodo;
+
     const [eachTodo, setEachTodo] = useState(props.todoInfo);
     const [editMode , setEditMode] = useState(false);
     const [editInput, setEditInput] = useState(eachTodo.todo);
     const [check, setCheck] = useState(false);
+    const [visible, setVisible] = useState(true);
 
     const updateTodo = () => {
         setEditMode(true);
@@ -23,7 +23,6 @@ const Todo = (props) => {
 
     const completeTodo = () => {
         
-        console.log('editInput:',editInput);
         axios({
             method:'PUT',
             url: apiURL + `todos/${eachTodo.id}`,
@@ -48,7 +47,7 @@ const Todo = (props) => {
     }
 
     const deleteTodo = (id) => {
-        console.log(id);
+
         axios({
             method:'delete',
             url: apiURL + `todos/` + id,
@@ -58,9 +57,9 @@ const Todo = (props) => {
         })
         .then((res) => {return res})
         .then((data) => {
-            // console.log(data);
             if (data.status === 204) {
-                getTodo();
+                setVisible(false);
+                console.log('삭제성공');
             }
         })
     }
@@ -71,9 +70,11 @@ const Todo = (props) => {
     }
 
 
-
     return(
-        <div className="todo_entire_section">
+        <>
+       <div className="todo_entire_section">
+       {visible ?
+        (
             <table className='todo_table'>
                 <input type='checkbox' onChange={(e) => changeCheck(e.target.checked)}></input>
                 <tr key={eachTodo.id}  style={{display:'table', width:'100%',alignContent:'center'}}>
@@ -94,8 +95,12 @@ const Todo = (props) => {
                         <button type='button' className='deletebtn' value={eachTodo.id} onClick={(e) => deleteTodo(e.target.value)}>삭제</button>
                     </td>
                 </tr>
-            </table>
-        </div>
+            </table>)
+        
+        :null
+    }
+    </div>
+    </>
     )
 }
 

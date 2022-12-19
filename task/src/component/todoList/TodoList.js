@@ -12,7 +12,7 @@ const TodoList = () => {
     const [todoInfos ,setTodoInfos] = useState([]);
     const [Num, setNum] = useState(1);
     const content = createRef();
-
+    
     const getTodo = () => {
 
         axios({
@@ -66,7 +66,7 @@ const TodoList = () => {
                 <div>
                     {todoInfos.map((todoInfo) => {
                         return (
-                        <Todo todoInfo={todoInfo} setTodoInfos={setTodoInfos} getTodo={getTodo}/>
+                        <Todo todoInfo={todoInfo} />
                     )})}
                 </div>
             </div>
