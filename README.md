@@ -18,7 +18,7 @@ npm start
 
 ## 📌구조 설계 이유
 
-1. 로그인 / 회원가입
+**1. 로그인 / 회원가입**
 
 ```javascript
 const [userInfo, setUserInfo] = useState({
@@ -30,7 +30,7 @@ const [userInfo, setUserInfo] = useState({
 ```
 
 - 로그인, 회원가입 모두 이메일, 패스워드 입력창이 각각 하나밖에 없기 때문에 실시간으로 입력되는 값에 따라 유효성 검사를 하고자 useState로 이메일, 패스워드, 유효성검사들을 한번에 생성하였습니다.
-- 즉, 위처럼 실시간으로 입력되는 값을 받기 위해서 `createReft`를 사용하여 input값을 가져와 userInfo 에 설정해주었습니다.
+- 즉, 위처럼 실시간으로 입력되는 값을 받기 위해서 `createRef`를 사용하여 input값을 가져와 userInfo 에 설정해주었습니다.
 
 ```javascript
 disabled = {userInfo.validEmail && userInfo.validPW == true ? false : true};
@@ -40,9 +40,33 @@ disabled = {userInfo.validEmail && userInfo.validPW == true ? false : true};
 
 `💡정리해서, 버튼 비활성화, 유효성검사를 처리하기 위해 useState에 모두 한번에 설정해 준 것입니다. `
 
-2. CRUD
+**+)token**
 
-3. +) style-component를 아직 사용해본적이 없기 때문에 scss를 사용하였습니다.
+- 로그인 여부에 따라서 리다이렉트 처리를 구현한다는 것이 토큰 유무에 따라 이동시켜준다고 판단하여 token state 변동에 따른 useEffect를 사용하였습니다.
+
+**2. CRUD**
+
+- 우선, CRUD로 구분짓기에 앞서 TodoList, Todo 로 컴포넌트를 분리한 이유는 TodoList는 전체적인 데이터를 관리한다고 생각하고, Todo는 그 안에 있는 개별적으로 하나 하나를 관리하는 것이라고 생각하여 분리하였습니다.
+  그렇기에 TodoList에서는 전체데이터를 불러오는 getTodo, 전체데이터에 추가하는 createTodo를 작성하였고 Todo에는 TodoList로부터 props (전체 데이터 중 한개씩)를 전달받아 개별적인 데이터 하나의 객체를 수정하는 update , 삭제하는 delete를 작성하였습니다.
+
+```javascript
+const apiURL = "https://pre-onboarding-selection-task.shop/";
+```
+
+- api 주소설정은 각 컴포넌트마다 선언해주었는데 이 부분의 경우 api 모듈을 따로 분리해서 사용하는 것이 좋다고 생각합니다.
+
+```javascript
+// delete 파트
+const [visible, setVisible] = useState(true);
+.
+.
+<button type='button' className='deletebtn' value={eachTodo.id} onClick={(e) => deleteTodo(e.target.value)}>삭제</button>
+```
+
+- 저는 위의 delete부분에서는 delete함수에 삭제하고자 하는 id값을 전달하기 위해 button value에 컴포넌트에 전달받은 객체 중 id 값을 담아주고 이 값을 onClick 이벤트 함수에 사용하였습니다. ( 이부분은 그냥 delete(id))로 해도 되었던 것 같습니다.) 이 때, 데이터상으로는 해당 id값이 삭제가 되지만 앞단에서는 해당 값이 아닌 가장 마지막에 create된 id값을 가진 컴포넌트가 삭제되는 것 처럼 보였습니다. 이를 해결하기 위해서
+  `const [visible, setVisible] = useState(true)`를 설정해준 것입니다. 즉, 데이터 삭제가 되면 visible이 false가 되어 컴포넌트가 보이지 않게 설정.
+
+**3. +) style-component를 아직 사용해본적이 없기 때문에 scss를 사용하였습니다.**
 
 ## 📌시연영상
 
