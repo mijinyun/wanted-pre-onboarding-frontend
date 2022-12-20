@@ -7,13 +7,39 @@ npm i
 npm start
 ```
 
-## 📌구조설명
+## 📌경로설명
 
 ```
 - / : 메인
 - /signUp : 회원가입
 - /signIn :로그인
 - /todo : todolist 목록
+```
+
+## 📌구조
+
+```
+📦src
+ ┣ 📂component
+ ┃ ┣ 📂main
+ ┃ ┃ ┣ 📜Main.js
+ ┃ ┃ ┗ 📜Main.scss
+ ┃ ┣ 📂todoList
+ ┃ ┃ ┣ 📜Todo.js
+ ┃ ┃ ┣ 📜Todo.scss
+ ┃ ┃ ┣ 📜TodoList.js
+ ┃ ┃ ┗ 📜TodoList.scss
+ ┃ ┣ 📂user
+ ┃ ┃ ┣ 📜SignIn.js
+ ┃ ┃ ┣ 📜SignIn.scss
+ ┃ ┃ ┣ 📜SignUp.js
+ ┃ ┃ ┗ 📜SignUp.scss
+ ┃ ┗ 📜Commons.scss
+ ┣ 📂utils
+ ┃ ┗ 📜Router.js
+ ┣ 📜App.css
+ ┣ 📜App.js
+ ┗ 📜index.js
 ```
 
 ## 📌구조 설계 이유
