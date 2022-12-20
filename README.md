@@ -16,6 +16,34 @@ npm start
 - /todo : todolist 목록
 ```
 
+## 📌구조 설계 이유
+
+1. 로그인 / 회원가입
+
+```javascript
+const [userInfo, setUserInfo] = useState({
+  email: "",
+  pw: "",
+  validEmail: false,
+  validPW: false,
+});
+```
+
+- 로그인, 회원가입 모두 이메일, 패스워드 입력창이 각각 하나밖에 없기 때문에 실시간으로 입력되는 값에 따라 유효성 검사를 하고자 useState로 이메일, 패스워드, 유효성검사들을 한번에 생성하였습니다.
+- 즉, 위처럼 실시간으로 입력되는 값을 받기 위해서 `createReft`를 사용하여 input값을 가져와 userInfo 에 설정해주었습니다.
+
+```javascript
+disabled = {userInfo.validEmail && userInfo.validPW == true ? false : true};
+```
+
+- button의 비활성화도 마찬가지로 useState에 저장된 유효성 검사 값을 활용해서 설정해주었습니다.
+
+`💡정리해서, 버튼 비활성화, 유효성검사를 처리하기 위해 useState에 모두 한번에 설정해 준 것입니다. `
+
+2. CRUD
+
+3. +) style-component를 아직 사용해본적이 없기 때문에 scss를 사용하였습니다.
+
 ## 📌시연영상
 
 ##### 1. 로그인 / 회원가입 / todo list 기능 구현
