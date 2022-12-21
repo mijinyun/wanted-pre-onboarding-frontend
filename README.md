@@ -37,8 +37,6 @@ npm start
  ┃ ┗ 📜Commons.scss
  ┣ 📂utils
  ┃ ┗ 📜Router.js
- ┣ 📜App.css
- ┣ 📜App.js
  ┗ 📜index.js
 ```
 
@@ -69,6 +67,17 @@ disabled = {userInfo.validEmail && userInfo.validPW == true ? false : true};
 **+)token**
 
 - 로그인 여부에 따라서 리다이렉트 처리를 구현한다는 것이 토큰 유무에 따라 이동시켜준다고 판단하여 최상위 Router 에서 token state 변동에 따른 useEffect를 사용하였습니다.
+```javascript
+const [token, setToken] = useState();
+
+    useEffect(() => {
+        const isToken = localStorage.getItem('access_token');
+        isToken != undefined && setToken(isToken);
+        token != undefined? navigate('/todo') : navigate('/');
+    },[token])
+```
+
+
 
 **2. CRUD**
 
