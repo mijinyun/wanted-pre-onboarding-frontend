@@ -51,7 +51,7 @@ npm start
 - scss 파일
   이부분은 규모가 작은 프로젝트이지만 다른분들처럼 styles라는 폴더를 따로 생성 후, 이용하는게 좋을 것 같습니다.
 
-**1. 로그인 / 회원가입**
+**2. 로그인 / 회원가입**
 
 ```javascript
 const [userInfo, setUserInfo] = useState({
@@ -88,10 +88,21 @@ useEffect(() => {
 }, [token]);
 ```
 
-**2. CRUD**
+**3. CRUD**
 
 - 우선, CRUD로 구분짓기에 앞서 TodoList, Todo 로 컴포넌트를 분리한 이유는 TodoList는 전체적인 데이터를 관리한다고 생각하고, Todo는 그 안에 있는 개별적으로 하나 하나를 관리하는 것이라고 생각하여 분리하였습니다.
   그렇기에 TodoList에서는 전체데이터를 불러오는 getTodo, 전체데이터에 추가하는 createTodo를 작성하였고 Todo에는 TodoList로부터 props (전체 데이터 중 한개씩)를 전달받아 개별적인 데이터 하나의 객체를 수정하는 update , 삭제하는 delete를 작성하였습니다.
+
+```javascript
+{todoInfos.map((todoInfo) => {
+    return (
+         <Todo todoInfo={todoInfo} />
+    )}
+)}
+```
+
+
+  
 
 ```javascript
 const apiURL = "https://pre-onboarding-selection-task.shop/";
@@ -110,7 +121,7 @@ const [visible, setVisible] = useState(true);
 - 저는 위의 delete부분에서는 delete함수에 삭제하고자 하는 id값을 전달하기 위해 button value에 컴포넌트에 전달받은 객체 중 id 값을 담아주고 이 값을 onClick 이벤트 함수에 사용하였습니다. ( 이부분은 그냥 delete(id))로 해도 되었던 것 같습니다.) 이 때, 데이터상으로는 해당 id값이 삭제가 되지만 앞단에서는 해당 값이 아닌 가장 마지막에 create된 id값을 가진 컴포넌트가 삭제되는 것 처럼 보였습니다. 이를 해결하기 위해서
   `const [visible, setVisible] = useState(true)`를 설정해준 것입니다. 즉, 데이터 삭제가 되면 visible이 false가 되어 컴포넌트가 보이지 않게 설정.
 
-**3. +) style-component를 아직 사용해본적이 없기 때문에 scss를 사용하였습니다.**
+**4. +) style-component를 아직 사용해본적이 없기 때문에 scss를 사용하였습니다.**
 
 ## 📌시연영상
 
