@@ -71,6 +71,18 @@ disabled = {userInfo.validEmail && userInfo.validPW == true ? false : true};
 
 - button의 비활성화도 마찬가지로 useState에 저장된 유효성 검사 값을 활용해서 설정해주었습니다.
 
+```javascript
+//signUp.js
+.catch((err) => {
+            document.querySelector('.warning').innerHTML = `<p style="color:red;">해당 이메일은 이미 존재합니다.</p>`;
+        })
+//signIn.js
+document.querySelector('.warninglogin').innerHTML = `<p style="color:red;">아이디 또는 비밀번호를 확인해주세요.</p>`;
+```
+- 회원가입, 로그인시 경고창을 띄울 수 있게 해두었는데 이부분은 state로도 처리가 가능할 것 같습니다.
+
+
+
 `💡정리해서, 버튼 비활성화, 유효성검사를 처리하기 위해 useState에 모두 한번에 설정해 준 것입니다. `
 
 **+)token**
