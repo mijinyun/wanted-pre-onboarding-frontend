@@ -40,7 +40,16 @@ npm start
  ┗ 📜index.js
 ```
 
-## 📌구조 설계 이유
+## 📌프로젝트 구현 이유
+
+**1.구조**
+
+- Router.js
+  index.js에서 경로를 관리하기 보다는 경로들을 따로 관리하는 컴포넌트가 필요하다고 생각하여 별로도 분리된 컴포넌트로 관리하였습니다.
+- component
+  저는 우선 각 컴포넌트별로 폴더를 구분하였는데 이부분의 경우 다른분들의 page와 component를 따로 분리한 부분이 더 좋은 것 같다고 생각합니다.
+- scss 파일
+  이부분은 규모가 작은 프로젝트이지만 다른분들처럼 styles라는 폴더를 따로 생성 후, 이용하는게 좋을 것 같습니다.
 
 **1. 로그인 / 회원가입**
 
@@ -67,17 +76,17 @@ disabled = {userInfo.validEmail && userInfo.validPW == true ? false : true};
 **+)token**
 
 - 로그인 여부에 따라서 리다이렉트 처리를 구현한다는 것이 토큰 유무에 따라 이동시켜준다고 판단하여 최상위 Router 에서 token state 변동에 따른 useEffect를 사용하였습니다.
+
 ```javascript
+//utils\Router.js
 const [token, setToken] = useState();
 
-    useEffect(() => {
-        const isToken = localStorage.getItem('access_token');
-        isToken != undefined && setToken(isToken);
-        token != undefined? navigate('/todo') : navigate('/');
-    },[token])
+useEffect(() => {
+  const isToken = localStorage.getItem("access_token");
+  isToken != undefined && setToken(isToken);
+  token != undefined ? navigate("/todo") : navigate("/");
+}, [token]);
 ```
-
-
 
 **2. CRUD**
 
